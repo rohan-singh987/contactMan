@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Rohan",
+      "lastName": "Singh",
+      "status": "active"
+    },
+    {
+      "id": 1,
+      "firstName": "Rohan",
+      "lastName": "Singh",
+      "status": "active"
+    },
+    {
+      "id": 1,
+      "firstName": "Rohan",
+      "lastName": "Singh",
+      "status": "active"
+    }
+  ]
+}
