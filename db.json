@@ -7,16 +7,16 @@
       "status": "active"
     },
     {
-      "id": 1,
-      "firstName": "Rohan",
-      "lastName": "Singh",
-      "status": "active"
+      "firstName": "RR",
+      "lastName": "S",
+      "status": "active",
+      "id": 2
     },
     {
-      "id": 1,
-      "firstName": "Rohan",
-      "lastName": "Singh",
-      "status": "active"
+      "firstName": "shree",
+      "lastName": "Ram",
+      "status": "inactive",
+      "id": 3
     }
   ]
 }

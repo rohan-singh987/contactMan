@@ -7,18 +7,22 @@ const EditUser = () => {
     const navigate = useNavigate();
     const{id} = useParams();
 
-    const [user, setUser] = useState({
-        firstName:"",
-        lastName:"",
-        status:"active"
-    })
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [status, setStatus] = useState('active');
 
-    const{firstName, lastName, status} = user;
+    // const{firstName, lastName, status} = user;
 
-    const onInputChange = (e) => {
-        setUser({
-            ...user, [e.target.name]: e.target.value
-        })
+    // const onInputChange = (e) => {
+    //     setUser({
+    //         ...user, [e.target.name]: e.target.value
+    //     })
+    // }
+
+    const user = {
+        firstName,
+        lastName,
+        status
     }
 
     useEffect(() => {
@@ -27,7 +31,10 @@ const EditUser = () => {
 
     const loadUser = async () => {
         const result = await axios.get(`http://localhost:3000/users/${id}`);
-        setUser(result.data);
+        // setUser(result.data);
+        setFirstName(result.data.firstName)
+        setLastName(result.data.lastName)
+        setStatus(result.data.status)
     }
 
     const handleSubmit = async (e) => {
@@ -49,7 +56,7 @@ const EditUser = () => {
                         First Name:
                         <input type="text"
                             value={firstName}
-                            onChange={(e) => onInputChange(e)}
+                            onChange={(e) => setFirstName(e.target.value)}
                             name='firstName'
                             className=' border-2 border-black ms-2 p-1'
                         />
@@ -58,7 +65,7 @@ const EditUser = () => {
                         Last Name:
                         <input type="text"
                             value={lastName}
-                            onChange={(e) => onInputChange(e)}
+                            onChange={(e) => setLastName(e.target.value)}
                             name='lastName'
                             className=' border-2 border-black ms-2 p-1'
                         />
@@ -71,7 +78,7 @@ const EditUser = () => {
                                     type="radio"
                                     value="active"
                                     checked={status === 'active'}
-                                    // onChange={() => setUser.status('active')}
+                                    onChange={() => setStatus('active')}
                                     className='me-2'
                                 />
                                 Active
@@ -83,7 +90,7 @@ const EditUser = () => {
                                     type="radio"
                                     value="inactive"
                                     checked={status === 'inactive'}
-                                    // onChange={() => setUser.status('inactive')}
+                                    onChange={() => setStatus('inactive')}
                                     className='me-2'
                                 />
                                 Inactive

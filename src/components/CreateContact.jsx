@@ -6,28 +6,38 @@ const CreateContact = () => {
 
     const navigate = useNavigate()
 
-    // const [firstName, setFirstName] = useState('');
-    // const [lastName, setLastName] = useState('');
-    // const [status, setStatus] = useState('active');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [status, setStatus] = useState('active');
 
-    const [user, setUser] = useState({
-        firstName:"",
-        lastName:"",
-        status:"active"
-    })
+    // const [user, setUser] = useState({
+    //     firstName:"",
+    //     lastName:"",
+    //     status:"active"
+    // })
 
-    const{firstName, lastName, status} = user;
+    // const{firstName, lastName, status} = user;
 
-    const onInputChange = (e) => {
-        setUser({
-            ...user, [e.target.name]: e.target.value
-        })
+    // const onInputChange = (e) => {
+    //     setUser({
+    //         ...user, [e.target.name]: e.target.value
+    //     })
+    // }
+
+    const user = {
+        firstName,
+        lastName,
+        status
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await axios.post('http://localhost:3000/users',user);
-        navigate('/')
+        try{
+            await axios.post('http://localhost:3000/users',user);
+            navigate('/')
+        } catch (error){
+            console.error(error);
+        }
     }
 
 
@@ -44,7 +54,7 @@ const CreateContact = () => {
                                 First Name:
                                 <input type="text"
                                     value={firstName}
-                                    onChange={(e) => onInputChange(e)}
+                                    onChange={(e) => setFirstName(e.target.value)}
                                     name='firstName'
                                     className=' border-2 border-black ms-2 p-1'
                                 />
@@ -53,7 +63,7 @@ const CreateContact = () => {
                                 Last Name:
                                 <input type="text"
                                     value={lastName}
-                                    onChange={(e) => onInputChange(e)}
+                                    onChange={(e) => setLastName(e.target.value)}
                                     name='lastName'
                                     className=' border-2 border-black ms-2 p-1'
                                 />
@@ -66,9 +76,10 @@ const CreateContact = () => {
                                             type="radio"
                                             value="active"
                                             checked={status === 'active'}
-                                            // onChange={() => setUser.status('active')}
+                                            onChange={() => setStatus('active')}
                                             className='me-2'
-                                        />
+                                            name='active'
+                                            />
                                         Active
                                     </label>
                                 </div>
@@ -78,9 +89,10 @@ const CreateContact = () => {
                                             type="radio"
                                             value="inactive"
                                             checked={status === 'inactive'}
-                                            // onChange={() => setUser.status('inactive')}
+                                            onChange={() => setStatus('inactive')}
                                             className='me-2'
-                                        />
+                                            name='inactive'
+                                            />
                                         Inactive
                                     </label>
                                 </div>
