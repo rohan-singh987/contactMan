@@ -12,12 +12,12 @@ const Contact = () => {
     }, []);
 
     const loadUser = async () => {
-        const result = await axios.get("http://localhost:3000/users");
+        const result = await axios.get("https://contactdataaaaa.onrender.com/users");
         setUsers(result.data)
     }
 
     const deleteContact = async(id) => {
-        await axios.delete(`http://localhost:3000/users/${id}`)
+        await axios.delete(`https://contactdataaaaa.onrender.com/users/${id}`)
         loadUser();
     } 
 

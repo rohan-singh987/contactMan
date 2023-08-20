@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useReducer, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 const EditUser = () => {
@@ -19,6 +19,7 @@ const EditUser = () => {
     //     })
     // }
 
+    const [state,dispatch] = useReducer()
     const user = {
         firstName,
         lastName,
@@ -30,7 +31,7 @@ const EditUser = () => {
     }, []);
 
     const loadUser = async () => {
-        const result = await axios.get(`http://localhost:3000/users/${id}`);
+        const result = await axios.get(`https://contactdataaaaa.onrender.com/users/${id}`);
         // setUser(result.data);
         setFirstName(result.data.firstName)
         setLastName(result.data.lastName)
@@ -39,7 +40,7 @@ const EditUser = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await axios.put(`http://localhost:3000/users/${id}`,user);
+        await axios.put(`https://contactdataaaaa.onrender.com/users/${id}`,user);
         navigate('/')
     }
 

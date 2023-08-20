@@ -33,7 +33,7 @@ const CreateContact = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try{
-            await axios.post('http://localhost:3000/users',user);
+            await axios.post('https://contactdataaaaa.onrender.com/users',user);
             navigate('/')
         } catch (error){
             console.error(error);
